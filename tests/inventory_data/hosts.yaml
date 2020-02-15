@@ -1,0 +1,121 @@
+---
+dev1.group_1:
+    port: 22
+    hostname: dev1.group_1
+    username:
+    password: a_password
+    platform: eos
+    data:
+        my_var: comes_from_dev1.group_1
+        www_server: nginx
+        role: www
+        nested_data:
+            a_dict:
+                a: 1
+                b: 2
+            a_list: [1, 2]
+            a_string: asdasd
+    groups:
+        - group_1
+    connection_options:
+        paramiko:
+            port: 22
+            hostname:
+            username: root
+            password: docker
+            platform: linux
+            extras: {}
+        dummy:
+            hostname: dummy_from_host
+            port:
+            username:
+            password:
+            platform:
+            extras:
+                blah: from_host
+dev2.group_1:
+    port: 22
+    hostname: dev2.group_1
+    username:
+    password:
+    platform: junos
+    data:
+        role: db
+        nested_data:
+            a_dict:
+                b: 2
+                c: 3
+            a_list: [2, 3]
+            a_string: qwe
+    groups:
+        - group_1
+    connection_options:
+        paramiko:
+            port:
+            hostname:
+            username: root
+            password: docker
+            platform: linux
+            extras: {}
+        dummy2:
+            hostname:
+            port:
+            username: dummy2_from_host
+            password:
+            platform:
+            extras:
+dev3.group_2:
+    port: 22
+    hostname: dev3.group_2
+    username:
+    password:
+    platform: linux
+    data:
+        www_server: apache
+        role: www
+    groups:
+        - group_2
+    connection_options:
+        napalm2:
+            platform: mock
+            hostname:
+            port:
+            username:
+            password:
+            extras: {}
+dev4.group_2:
+    port: 22
+    hostname: dev4.group_2
+    username:
+    password:
+    platform: linux
+    data:
+        my_var: comes_from_dev4.group_2
+        role: db
+    groups:
+        - group_2
+        - parent_group
+    connection_options:
+        paramiko:
+            port:
+            hostname: dev4.group_2
+            username: root
+            password: docker
+            platform: linux
+            extras: {}
+        netmiko:
+            port:
+            hostname: dev4.group_2
+            username: root
+            password: docker
+            platform: linux
+            extras: {}
+dev5.no_group:
+    port: 22
+    hostname: dev5.no_group
+    username:
+    password:
+    platform: linux
+    data: {}
+    groups: []
+    connection_options: {}

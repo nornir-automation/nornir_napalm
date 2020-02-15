@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "nornir_napalm"
+version = "0.1.0"
+description = "NAPALM's plugins for nornir"
+authors = ["David Barroso <dbarrosop@dravetech.com>"]
+license = "Apache-2.0"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+napalm = "^2"
+nornir = "^3"
+
+[tool.poetry.dev-dependencies]
+black = { version = "19.10b0", allow-prereleases = true }
+mypy = "*"
+pytest = "*"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
