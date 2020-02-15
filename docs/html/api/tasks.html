@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tasks &mdash; nornir_napalm  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tutorials" href="../tutorials/index.html" />
+    <link rel="prev" title="connections" href="connections.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> nornir_napalm
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="connections.html">connections</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">nornir_napalm</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">API</a> &raquo;</li>
+        
+      <li>tasks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/tasks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-nornir_napalm.plugins.tasks">
+<span id="tasks"></span><h1>tasks<a class="headerlink" href="#module-nornir_napalm.plugins.tasks" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="nornir_napalm.plugins.tasks.napalm_cli">
+<code class="sig-prename descclassname">nornir_napalm.plugins.tasks.</code><code class="sig-name descname">napalm_cli</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task</span><span class="p">:</span> <span class="n">nornir.core.task.Task</span></em>, <em class="sig-param"><span class="n">commands</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; nornir.core.task.Result<a class="headerlink" href="#nornir_napalm.plugins.tasks.napalm_cli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run commands on remote devices using napalm</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>commands</strong> – commands to execute</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>result (<code class="docutils literal notranslate"><span class="pre">dict</span></code>): result of the commands execution</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Result object with the following attributes set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nornir_napalm.plugins.tasks.napalm_configure">
+<code class="sig-prename descclassname">nornir_napalm.plugins.tasks.</code><code class="sig-name descname">napalm_configure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task</span><span class="p">:</span> <span class="n">nornir.core.task.Task</span></em>, <em class="sig-param"><span class="n">dry_run</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>bool<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">configuration</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">replace</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; nornir.core.task.Result<a class="headerlink" href="#nornir_napalm.plugins.tasks.napalm_configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads configuration into a network devices using napalm</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dry_run</strong> – Whether to apply changes or not</p></li>
+<li><p><strong>filename</strong> – filename containing the configuration to load into the device</p></li>
+<li><p><strong>configuration</strong> – configuration to load into the device</p></li>
+<li><p><strong>replace</strong> – whether to replace or merge the configuration</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>changed (<code class="docutils literal notranslate"><span class="pre">bool</span></code>): whether the task is changing the system or not</p></li>
+<li><p>diff (<code class="docutils literal notranslate"><span class="pre">string</span></code>): change in the system</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Result object with the following attributes set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nornir_napalm.plugins.tasks.napalm_get">
+<code class="sig-prename descclassname">nornir_napalm.plugins.tasks.</code><code class="sig-name descname">napalm_get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task</span><span class="p">:</span> <span class="n">nornir.core.task.Task</span></em>, <em class="sig-param"><span class="n">getters</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">getters_options</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Dict<span class="p">[</span>str<span class="p">, </span>Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> &#x2192; nornir.core.task.Result<a class="headerlink" href="#nornir_napalm.plugins.tasks.napalm_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gather information from network devices using napalm</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>getters</strong> – getters to use</p></li>
+<li><p><strong>getters_options</strong> (<em>dict of dicts</em>) – When passing multiple getters you
+pass a dictionary where the outer key is the getter name
+and the included dictionary represents the options to pass
+to the getter</p></li>
+<li><p><strong>**kwargs</strong> – will be passed as they are to the getters</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>result (<code class="docutils literal notranslate"><span class="pre">dict</span></code>): dictionary with the result of the getter</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Result object with the following attributes set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nornir_napalm.plugins.tasks.napalm_ping">
+<code class="sig-prename descclassname">nornir_napalm.plugins.tasks.</code><code class="sig-name descname">napalm_ping</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task</span><span class="p">:</span> <span class="n">nornir.core.task.Task</span></em>, <em class="sig-param"><span class="n">dest</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">source</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ttl</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">255</span></em>, <em class="sig-param"><span class="n">timeout</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">2</span></em>, <em class="sig-param"><span class="n">size</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">100</span></em>, <em class="sig-param"><span class="n">count</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">5</span></em>, <em class="sig-param"><span class="n">vrf</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; nornir.core.task.Result<a class="headerlink" href="#nornir_napalm.plugins.tasks.napalm_ping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes ping on the device and returns a dictionary with the result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dest</strong> (<em>str</em>) – </p></li>
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>ttl</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>timeout</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>size</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>count</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>vrf</strong> (<em>str</em><em>, </em><em>optional</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>result (<code class="docutils literal notranslate"><span class="pre">dict</span></code>): list of dictionary with the result of the ping response.
+Output dictionary has one of following keys “success or error”</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Result object with the following attributes set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nornir_napalm.plugins.tasks.napalm_validate">
+<code class="sig-prename descclassname">nornir_napalm.plugins.tasks.</code><code class="sig-name descname">napalm_validate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">task</span><span class="p">:</span> <span class="n">nornir.core.task.Task</span></em>, <em class="sig-param"><span class="n">src</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">validation_source</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Dict<span class="p">[</span>str<span class="p">, </span>Dict<span class="p">[</span>str<span class="p">, </span>Any<span class="p">]</span><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; nornir.core.task.Result<a class="headerlink" href="#nornir_napalm.plugins.tasks.napalm_validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gather information with napalm and validate it:</p>
+<blockquote>
+<div><p><a class="reference external" href="http://napalm.readthedocs.io/en/develop/validate/index.html">http://napalm.readthedocs.io/en/develop/validate/index.html</a></p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src</strong> – file to use as validation source</p></li>
+<li><p><strong>validation_source</strong> (<em>list</em>) – data to validate device’s state</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>result (<code class="docutils literal notranslate"><span class="pre">dict</span></code>): dictionary with the result of the validation</p></li>
+<li><p>complies (<code class="docutils literal notranslate"><span class="pre">bool</span></code>): Whether the device complies or not</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Result object with the following attributes set</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../tutorials/index.html" class="btn btn-neutral float-right" title="Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="connections.html" class="btn btn-neutral float-left" title="connections" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, David Barroso
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
