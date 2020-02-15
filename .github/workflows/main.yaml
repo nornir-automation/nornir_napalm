@@ -1,10 +1,10 @@
 ---
-name: test nornir_napalm
+name: test napalm_nornir
 on: [push,pull_request]
 
 jobs:
-  black_mypy:
-    name: Running black and mypy
+  linters:
+    name: linters
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,9 +19,8 @@ jobs:
         id: cache
         with:
           path: ~/.virtualenvs
-          key: poetry-${{ hashFiles('**/poetry.lock') }}
-          restore-keys: |
-            poetry-${{ hashFiles('**/poetry.lock') }}
+          key: poetry-linters-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: poetry-linters-${{ hashFiles('**/poetry.lock') }}
 
       - name: Set Poetry config
         run: |
@@ -30,17 +29,20 @@ jobs:
 
       - name: Install Dependencies
         run: poetry install
-        if: steps.cache.outputs.cache-hit != 'true'
 
-      - run: poetry run black --check
-      - run: poetry run mypy .
+      - name: Run pylama
+        run: make pylama
+      - name: Run black
+        run: make black
+      - name: Run mypy
+        run: make mypy
 
   pytest:
+    name: Testing on Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [ '3.6', '3.7', '3.8' ]
-    name: Testing on Python ${{ matrix.python-version }}
     steps:
       - uses: actions/checkout@v2
       - name: Setup python
@@ -49,6 +51,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
 
+      - name: Start containers
+        run: docker-compose up -d
+
       - name: Install Poetry
         uses: dschep/install-poetry-action@v1.2
 
@@ -57,9 +62,8 @@ jobs:
         id: cache
         with:
           path: ~/.virtualenvs
-          key: poetry-${{ hashFiles('**/poetry.lock') }}
-          restore-keys: |
-            poetry-${{ hashFiles('**/poetry.lock') }}
+          key: poetry-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: poetry-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
 
       - name: Set Poetry config
         run: |
@@ -68,6 +72,6 @@ jobs:
 
       - name: Install Dependencies
         run: poetry install
-        if: steps.cache.outputs.cache-hit != 'true'
 
-      - run: poetry run pytest -vs
+      - name: Run pytest
+        run: make pytest

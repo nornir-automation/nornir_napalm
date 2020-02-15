@@ -58,4 +58,5 @@ class Napalm(ConnectionPlugin):
         self.connection.close()
 
 
-Connections.register(CONNECTION_NAME, Napalm)
+if CONNECTION_NAME not in Connections.available:
+    Connections.register(CONNECTION_NAME, Napalm)
