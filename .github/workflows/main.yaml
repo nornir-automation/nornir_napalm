@@ -32,8 +32,8 @@ jobs:
         run: poetry install
         if: steps.cache.outputs.cache-hit != 'true'
 
-      - run: black --check
-      - run: mypy .
+      - run: poetry run black --check
+      - run: poetry run mypy .
 
   pytest:
     runs-on: ubuntu-latest
@@ -70,4 +70,4 @@ jobs:
         run: poetry install
         if: steps.cache.outputs.cache-hit != 'true'
 
-      - run: pytest -vs
+      - run: poetry run pytest -vs
