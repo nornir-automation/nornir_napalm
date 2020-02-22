@@ -1,5 +1,5 @@
 ---
-name: test nornir_napalm
+name: test_nornir_napalm
 on: [push,pull_request]
 
 jobs:
