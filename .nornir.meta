@@ -8,12 +8,11 @@ categories:
 intro: README.md
 tests:
 	- make tests
-plugins:
-	connection:
-		- nornir_napalm.connections.Napalm
-	tasks:
-		- nornir_napalm.tasks.napalm_cli
-		- nornir_napalm.tasks.napalm_configure
-		- nornir_napalm.tasks.napalm_get
-		- nornir_napalm.tasks.napalm_ping
-		- nornir_napalm.tasks.napalm_validate
+connection_plugins:
+	- nornir_napalm.connections.Napalm
+task_plugins:
+	- nornir_napalm.tasks.napalm_cli
+	- nornir_napalm.tasks.napalm_configure
+	- nornir_napalm.tasks.napalm_get
+	- nornir_napalm.tasks.napalm_ping
+	- nornir_napalm.tasks.napalm_validate
