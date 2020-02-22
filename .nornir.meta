@@ -5,7 +5,7 @@ summary: |
 categories:
   - napalm
   - networking
-intro: README.md
+intro_file: README.md
 tests:
   - make tests
 connection_plugins:
