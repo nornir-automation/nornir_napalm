@@ -11,7 +11,7 @@ dev3.group_2:
     groups:
         - group_2
     connection_options:
-        napalm_nornir.napalm:
+        napalm:
             platform: mock
             hostname:
             port:
