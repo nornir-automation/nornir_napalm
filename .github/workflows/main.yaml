@@ -1,5 +1,5 @@
 ---
-name: test napalm_nornir
+name: test nornir_napalm
 on: [push,pull_request]
 
 jobs:
@@ -50,9 +50,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
-
-      - name: Start containers
-        run: docker-compose up -d
 
       - name: Install Poetry
         uses: dschep/install-poetry-action@v1.2
