@@ -6,7 +6,7 @@ from nornir.core.configuration import Config
 from nornir.core.connections import ConnectionPlugin
 
 
-CONNECTION_NAME = "napalm"
+CONNECTION_NAME = "nornir_napalm.napalm"
 
 
 class Napalm(ConnectionPlugin):
