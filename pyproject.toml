@@ -11,7 +11,7 @@ license = "Apache-2.0"
 [tool.poetry.dependencies]
 python = "^3.6"
 napalm = "^2"
-nornir = { git = "https://github.com/nornir-automation/nornir/", branch = "3.0.0" }
+nornir = { git = "https://github.com/nornir-automation/nornir/", branch = "3.0.0-entrypoints" }
 
 [tool.poetry.dev-dependencies]
 black = { version = "19.10b0", allow-prereleases = true }
