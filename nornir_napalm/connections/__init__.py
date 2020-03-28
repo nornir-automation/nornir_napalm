@@ -3,10 +3,7 @@ from typing import Any, Dict, Optional
 from napalm import get_network_driver
 
 from nornir.core.configuration import Config
-from nornir.core.connections import ConnectionPlugin, Connections
-
-
-CONNECTION_NAME = "napalm"
+from nornir.core.connections import ConnectionPlugin
 
 
 class Napalm(ConnectionPlugin):
@@ -56,7 +53,3 @@ class Napalm(ConnectionPlugin):
 
     def close(self) -> None:
         self.connection.close()
-
-
-if CONNECTION_NAME not in Connections.available:
-    Connections.register(CONNECTION_NAME, Napalm)
