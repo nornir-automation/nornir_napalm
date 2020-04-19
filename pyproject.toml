@@ -6,7 +6,7 @@ authors = ["David Barroso <dbarrosop@dravetech.com>"]
 license = "Apache-2.0"
 
 [tool.poetry.plugins."nornir.plugins.connections"]
-"nornir_napalm.napalm" = "nornir_napalm.connections:Napalm"
+"napalm" = "nornir_napalm.connections:Napalm"
 
 [tool.poetry.dependencies]
 python = "^3.6"
