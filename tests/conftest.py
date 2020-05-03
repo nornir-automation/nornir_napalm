@@ -16,11 +16,12 @@ def nornir(request):
 
     nornir = InitNornir(
         inventory={
+            "plugin": "SimpleInventory",
             "options": {
                 "host_file": "{}/inventory_data/hosts.yaml".format(dir_path),
                 "group_file": "{}/inventory_data/groups.yaml".format(dir_path),
                 "defaults_file": "{}/inventory_data/defaults.yaml".format(dir_path),
-            }
+            },
         },
         dry_run=True,
     )
