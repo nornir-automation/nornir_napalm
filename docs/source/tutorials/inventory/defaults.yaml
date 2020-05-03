@@ -1,0 +1,6 @@
+---
+connection_options:
+    napalm:
+        extras:
+            optional_args:
+                path: "mocked/"

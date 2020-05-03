@@ -1,0 +1,4 @@
+---
+rtr00:
+    hostname: rtr00
+    platform: mock
