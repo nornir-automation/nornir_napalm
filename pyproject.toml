@@ -10,7 +10,7 @@ license = "Apache-2.0"
 
 [tool.poetry.dependencies]
 python = "^3.6"
-napalm = "^2"
+napalm = "^3"
 nornir = { version = "~3.0.0a2", allow-prereleases = true }
 
 [tool.poetry.dev-dependencies]
