@@ -1,4 +1,4 @@
-mport os
+import os
 
 from nornir.plugins.tasks import networking
 
