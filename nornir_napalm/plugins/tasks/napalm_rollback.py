@@ -13,4 +13,4 @@ def napalm_rollback(task: Task, dry_run: bool = None) -> Result:
     if not dry_run:
         device.rollback()
 
-    return Result(host=task.host)
+    return Result(host=task.host, result=result))

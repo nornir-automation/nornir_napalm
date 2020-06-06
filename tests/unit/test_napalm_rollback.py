@@ -1,16 +1,16 @@
 import os
 
 from nornir_napalm.plugins.tasks import networking
-
+from nornir_napalm.plugins.connections import CONNECTION_NAME
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__)) + "/mocked/napalm_rollback"
 
 
 def connect(task, extras):
-    if "napalm" in task.host.connections:
-        task.host.close_connection("napalm")
+    if CONNECTION_NAME in task.host.connections:
+        task.host.close_connection(CONNECTION_NAME)
     task.host.open_connection(
-        "napalm",
+        CONNECTION_NAME,
         task.nornir.config,
         extras={"optional_args": extras},
         default_to_host_attributes=True,
