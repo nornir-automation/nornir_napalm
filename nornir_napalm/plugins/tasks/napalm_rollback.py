@@ -11,6 +11,6 @@ def napalm_rollback(task: Task, dry_run: bool = None) -> Result:
     device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
 
     if not dry_run:
-        device.rollback()
+        result = device.rollback()
 
     return Result(host=task.host, result=result)
