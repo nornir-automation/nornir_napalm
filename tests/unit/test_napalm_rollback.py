@@ -1,6 +1,6 @@
 import os
 
-from nornir.plugins.tasks import networking
+from nornir_napalm.plugins.tasks import networking
 
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__)) + "/mocked/napalm_rollback"
