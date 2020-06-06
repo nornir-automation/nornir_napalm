@@ -10,5 +10,6 @@ __all__ = (
     "napalm_configure",
     "napalm_get",
     "napalm_ping",
+    "napalm_validate",
     "napalm_rollback",
 )
