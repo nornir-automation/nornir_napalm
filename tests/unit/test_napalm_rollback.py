@@ -1,6 +1,6 @@
 import os
 
-from nornir_napalm.plugins.tasks import networking
+from nornir_napalm.plugins.tasks import napalm_rollback
 from nornir_napalm.plugins.connections import CONNECTION_NAME
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__)) + "/mocked/napalm_rollback"
@@ -22,7 +22,7 @@ class Test(object):
         opt = {"path": THIS_DIR + "/test_napalm_rollback_commit"}
         d = nornir.filter(name="dev3.group_2")
         d.run(connect, extras=opt)
-        result = d.run(networking.napalm_rollback, dry=False)
+        result = d.run(napalm_rollback, dry=False)
         assert result
         for h, r in result.items():
             # Need to figure out what if a diff is returned
@@ -32,7 +32,7 @@ class Test(object):
         opt = {"path": THIS_DIR + "/test_napalm_rollback_dry_run"}
         d = nornir.filter(name="dev3.group_2")
         d.run(connect, extras=opt)
-        result = d.run(networking.napalm_rollback, dry=True)
+        result = d.run(napalm_rollback, dry=True)
         assert result
         for h, r in result.items():
             # Need to figure out what if a diff is returned
