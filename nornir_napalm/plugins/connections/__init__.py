@@ -3,13 +3,12 @@ from typing import Any, Dict, Optional
 from napalm import get_network_driver
 
 from nornir.core.configuration import Config
-from nornir.core.connections import ConnectionPlugin
 
 
 CONNECTION_NAME = "napalm"
 
 
-class Napalm(ConnectionPlugin):
+class Napalm:
     """
     This plugin connects to the device using the NAPALM driver and sets the
     relevant connection.
