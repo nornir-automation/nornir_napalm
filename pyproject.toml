@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nornir_napalm"
-version = "0.1.0a1"
+version = "0.1.0"
 description = "NAPALM's plugins for nornir"
 authors = ["David Barroso <dbarrosop@dravetech.com>"]
 license = "Apache-2.0"
