@@ -26,6 +26,7 @@ nbsphinx = "^0.6.1"
 sphinx-issues = "^1.2.0"
 sphinx_rtd_theme = "^0.4.3"
 nornir_utils = { version = "*", allow-prereleases = true }
+pytest-cov = "^2.10.1"
 
 
 [build-system]
