@@ -6,7 +6,7 @@ from nornir_napalm.plugins.connections import CONNECTION_NAME
 
 def napalm_traceroute(
     task: Task,
-    dest: str,
+    destination: str,
     source: Optional[str] = "",
     ttl: Optional[int] = 255,
     timeout: Optional[int] = 2,
@@ -16,7 +16,7 @@ def napalm_traceroute(
     Executes traceroute on the device and returns a dictionary with the result.
 
     Arguments:
-      dest(str) – Host or IP Address of the destination.
+      destination(str) – Host or IP Address of the destination.
       source(str, optional) – Source address of echo request.
       ttl(int, optional) – Max number of hops.
       timeout(int, optional) – Max seconds to wait after sending final packet.
@@ -31,7 +31,7 @@ def napalm_traceroute(
     """
     device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
     result = device.traceroute(
-        destination=dest,
+        destination=destination,
         source=source,
         ttl=ttl,
         timeout=timeout,
