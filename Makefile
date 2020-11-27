@@ -3,7 +3,7 @@ NAME=$(shell basename $(PWD))
 PYTHON:=3.7
 
 DOCKER=docker run \
-	   --rm -ir \
+	   --rm -it \
 	   --name $(NAME)-tests \
 	   -v $(PWD):/$(NAME) \
 	   --rm $(NAME):latest
@@ -19,7 +19,7 @@ docker:
 
 .PHONY: pytest
 pytest:
-	poetry run pytest -vs ${ARGS} .
+	poetry run pytest --cov=nornir_napalm --cov-report=term-missing -vs ${ARGS} .
 	poetry run pytest --nbval -vs ${ARGS} docs/source/tutorials
 
 .PHONY: black
