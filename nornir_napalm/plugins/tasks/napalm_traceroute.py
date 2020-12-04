@@ -31,10 +31,6 @@ def napalm_traceroute(
     """
     device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
     result = device.traceroute(
-        destination=destination,
-        source=source,
-        ttl=ttl,
-        timeout=timeout,
-        vrf=vrf,
+        destination=destination, source=source, ttl=ttl, timeout=timeout, vrf=vrf,
     )
     return Result(host=task.host, result=result)
