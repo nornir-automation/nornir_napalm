@@ -32,5 +32,7 @@ _____
 * **napalm_cli** - Call napalm's `cli` method
 * **napalm_configure** - Call napalm's `configure` method. It also allows committing/discarding configurations.
 * **napalm_get** - Call napalm's `get_*` methods
-* **napalm_ping** - Call napalm's `ping` method`
+* **napalm_ping** - Call napalm's `ping` method
 * **napalm_validate** - Call napalm's `validate` method
+* **napalm_traceroute** - Call napalm's `traceroute` method
+
