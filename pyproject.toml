@@ -10,7 +10,7 @@ license = "Apache-2.0"
 
 [tool.poetry.dependencies]
 python = "^3.6"
-napalm = "^3"
+napalm = {git = "https://github.com/napalm-automation/napalm.git", rev = "develop"}
 nornir = { version = "~3.0.0b1", allow-prereleases = true }
 
 [tool.poetry.dev-dependencies]
