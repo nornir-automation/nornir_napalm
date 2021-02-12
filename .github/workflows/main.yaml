@@ -1,4 +1,4 @@
----
+--- 
 name: test_nornir_napalm
 on: [push,pull_request]
 
@@ -24,6 +24,9 @@ jobs:
         with:
           path: .venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Install xml dependencies
+        run: sudo apt-get install libxml2-dev libxslt-dev
 
       - name: Install Dependencies
         run: poetry install
@@ -63,6 +66,9 @@ jobs:
         with:
           path: .venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Install xml dependencies
+        run: sudo apt-get install libxml2-dev libxslt-dev
 
       - name: Install Dependencies
         run: poetry install
