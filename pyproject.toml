@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nornir_napalm"
-version = "0.1.0"
+version = "0.1.1"
 description = "NAPALM's plugins for nornir"
 authors = ["David Barroso <dbarrosop@dravetech.com>"]
 license = "Apache-2.0"
@@ -11,7 +11,7 @@ license = "Apache-2.0"
 [tool.poetry.dependencies]
 python = "^3.6"
 napalm = "^3"
-nornir = { version = "~3.0.0b1", allow-prereleases = true }
+nornir = { version = "~3", allow-prereleases = true }
 
 [tool.poetry.dev-dependencies]
 black = { version = "19.10b0", allow-prereleases = true }
