@@ -11,7 +11,7 @@ def napalm_configure(
     filename: Optional[str] = None,
     configuration: Optional[str] = None,
     replace: bool = False,
-    comment: str = None,
+    commit_message: str = None,
 ) -> Result:
     """
     Loads configuration into a network devices using napalm
@@ -37,8 +37,8 @@ def napalm_configure(
 
     dry_run = task.is_dry_run(dry_run)
     if not dry_run and diff:
-        if comment:
-            device.commit_config(message=comment)
+        if commit_message:
+            device.commit_config(message=commit_message)
         else:
             device.commit_config()
     else:
