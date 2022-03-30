@@ -9,24 +9,24 @@ license = "Apache-2.0"
 "napalm" = "nornir_napalm.plugins.connections:Napalm"
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = ">=3.7,<4.0"
 napalm = "^3"
 nornir = { version = "~3", allow-prereleases = true }
 
 [tool.poetry.dev-dependencies]
-black = { version = "19.10b0", allow-prereleases = true }
+black = "^22.1.0"
 mypy = "*"
-pylama = "^7.7.1"
+pylama = "*"
 pytest = "*"
 nbval = "*"
 jupyter = "^1"
-sphinx = "^3.0.3"
+sphinx = "^4"
 sphinxcontrib-napoleon = "^0.7"
-nbsphinx = "^0.6.1"
-sphinx-issues = "^1.2.0"
-sphinx_rtd_theme = "^0.4.3"
+nbsphinx = "^0.8"
+sphinx-issues = "^3.0"
+sphinx_rtd_theme = "^1.0"
 nornir_utils = { version = "*", allow-prereleases = true }
-pytest-cov = "^2.10.1"
+pytest-cov = "*"
 
 
 [build-system]
