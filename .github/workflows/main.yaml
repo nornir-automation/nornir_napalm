@@ -14,7 +14,9 @@ jobs:
       - name: Install and configure Poetry
         uses: snok/install-poetry@v1
         with:
-          virtualenvs-path: ~/.virtualenvs
+          version: 1.1.13
+          virtualenvs-create: true
+          virtualenvs-in-project: true
 
       - name: Cache Poetry virtualenv
         uses: actions/cache@v2
@@ -40,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ '3.6', '3.7', '3.8' ]
+        python-version: [ '3.7', '3.8', '3.9', '3.10' ]
     steps:
       - uses: actions/checkout@v2
       - name: Setup python
@@ -52,7 +54,7 @@ jobs:
       - name: Install Poetry
         uses: snok/install-poetry@v1.1.1
         with:
-          version: 1.1.4
+          version: 1.1.13
           virtualenvs-create: true
           virtualenvs-in-project: true
 
