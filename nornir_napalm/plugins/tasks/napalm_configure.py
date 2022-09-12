@@ -12,6 +12,7 @@ def napalm_configure(
     configuration: Optional[str] = None,
     replace: bool = False,
     commit_message: str = None,
+    revert_in: Optional[int] = None
 ) -> Result:
     """
     Loads configuration into a network devices using napalm
@@ -21,6 +22,7 @@ def napalm_configure(
         filename: filename containing the configuration to load into the device
         configuration: configuration to load into the device
         replace: whether to replace or merge the configuration
+        revert_in: amount of time in seconds after which to revert the commit, None to disable
 
     Returns:
         Result object with the following attributes set:
@@ -38,9 +40,9 @@ def napalm_configure(
     dry_run = task.is_dry_run(dry_run)
     if not dry_run and diff:
         if commit_message:
-            device.commit_config(message=commit_message)
+            device.commit_config(message=commit_message, revert_in=revert_in)
         else:
-            device.commit_config()
+            device.commit_config(revert_in=revert_in)
     else:
         device.discard_config()
     return Result(host=task.host, diff=diff, changed=len(diff) > 0)
