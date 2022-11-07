@@ -12,7 +12,7 @@ def napalm_configure(
     configuration: Optional[str] = None,
     replace: bool = False,
     commit_message: str = None,
-    revert_in: Optional[int] = None
+    revert_in: Optional[int] = None,
 ) -> Result:
     """
     Loads configuration into a network devices using napalm
