@@ -74,7 +74,7 @@ jobs:
 
   release:
     name: Releasing to pypi
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@master
       - name: Build
