@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Dict, Any
 
 from nornir.core.task import Result, Task
 
@@ -11,7 +11,7 @@ def napalm_configure(
     filename: Optional[str] = None,
     configuration: Optional[str] = None,
     replace: bool = False,
-    commit_message: str = None,
+    commit_message: Optional[str] = None,
     revert_in: Optional[int] = None,
     confirm_commit: bool = False,
 ) -> Result:
@@ -43,7 +43,7 @@ def napalm_configure(
 
     dry_run = task.is_dry_run(dry_run)
 
-    commit_kwargs = {}
+    commit_kwargs: Dict[str, Any] = {}
     if commit_message:
         commit_kwargs["message"] = commit_message
     if revert_in is not None:
