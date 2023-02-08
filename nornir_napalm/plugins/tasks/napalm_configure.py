@@ -42,11 +42,15 @@ def napalm_configure(
     diff = device.compare_config()
 
     dry_run = task.is_dry_run(dry_run)
+
+    commit_kwargs = {}
+    if commit_message:
+        commit_kwargs["message"] = commit_message
+    if revert_in is not None:
+        commit_kwargs["revert_in"] = revert_in
+
     if not dry_run and diff:
-        if commit_message:
-            device.commit_config(message=commit_message, revert_in=revert_in)
-        else:
-            device.commit_config(revert_in=revert_in)
+        device.commit_config(**commit_kwargs)
     else:
         device.discard_config()
     return Result(host=task.host, diff=diff, changed=len(diff) > 0)
