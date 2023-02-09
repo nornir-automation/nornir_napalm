@@ -7,7 +7,6 @@ THIS_DIR = os.path.dirname(os.path.realpath(__file__)) + "/mocked/napalm_rollbac
 
 
 def connect(task, extras):
-    # import pdbr; pdbr.set_trace()
     if CONNECTION_NAME in task.host.connections:
         task.host.close_connection(CONNECTION_NAME)
     task.host.open_connection(
