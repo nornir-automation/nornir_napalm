@@ -1,6 +1,6 @@
 import os
 
-from nornir_napalm.plugins.tasks import napalm_configure, napalm_rollback
+from nornir_napalm.plugins.tasks import napalm_rollback
 from nornir_napalm.plugins.connections import CONNECTION_NAME
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__)) + "/mocked/napalm_rollback"
@@ -19,7 +19,6 @@ def connect(task, extras):
 
 
 class Test(object):
-
     def test_napalm_rollback_commit(self, nornir):
         opt = {"path": THIS_DIR + "/test_napalm_rollback_commit"}
         d = nornir.filter(name="dev3.group_2")
