@@ -11,7 +11,7 @@ def napalm_configure(
     filename: Optional[str] = None,
     configuration: Optional[str] = None,
     replace: bool = False,
-    commit_message: str = None,
+    commit_message: Optional[str] = None,
 ) -> Result:
     """
     Loads configuration into a network devices using napalm
