@@ -1,7 +1,6 @@
 from typing import Optional, Dict, Any
 
 from nornir.core.task import Result, Task
-
 from nornir_napalm.plugins.connections import CONNECTION_NAME
 
 
@@ -13,7 +12,6 @@ def napalm_configure(
     replace: bool = False,
     commit_message: Optional[str] = None,
     revert_in: Optional[int] = None,
-    confirm_commit: bool = False,
 ) -> Result:
     """
     Loads configuration into a network devices using napalm
@@ -24,7 +22,6 @@ def napalm_configure(
         configuration: configuration to load into the device
         replace: whether to replace or merge the configuration
         revert_in: amount of time in seconds after which to revert the commit, None to disable
-        confirm_commit: can be set to True to allow confirming of a commit that is pending revert
 
     Returns:
         Result object with the following attributes set:
@@ -33,9 +30,7 @@ def napalm_configure(
     """
     device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
 
-    if confirm_commit:
-        device.confirm_commit()
-    elif replace:
+    if replace:
         device.load_replace_candidate(filename=filename, config=configuration)
     else:
         device.load_merge_candidate(filename=filename, config=configuration)

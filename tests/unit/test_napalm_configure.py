@@ -2,7 +2,11 @@ import os
 
 from napalm.base import exceptions
 
-from nornir_napalm.plugins.tasks import napalm_configure
+from nornir_napalm.plugins.tasks import (
+    napalm_configure,
+    napalm_confirm_commit,
+    napalm_rollback,
+)
 from nornir_napalm.plugins.connections import CONNECTION_NAME
 
 
@@ -62,3 +66,66 @@ class Test(object):
             processed = True
             assert isinstance(result.exception, exceptions.MergeConfigException)
         assert processed
+
+    def test_napalm_configure_revert_in(self, nornir):
+        opt = {"path": f"{THIS_DIR}/test_napalm_configure_revert_in"}
+        configuration = "hostname changed-hostname"
+
+        d = nornir.filter(name="dev3.group_2")
+        d.run(connect, extras=opt)
+        result = d.run(
+            napalm_configure, dry_run=False, configuration=configuration, revert_in=300
+        )
+        assert result
+        for h, r in result.items():
+            assert "+hostname changed-hostname" in r.diff
+            assert r.changed
+
+        # Confirm pending commit
+        result = d.run(napalm_confirm_commit, dry_run=False)
+        assert result
+        for h, r in result.items():
+            assert r.changed is True
+            assert r.result == "Commit confirm completed"
+
+        # There should be no pending commit at this point
+        result = d.run(napalm_confirm_commit, dry_run=False)
+        assert result
+        for h, r in result.items():
+            assert r.changed is False
+            assert "no pending commits" in r.result
+
+    def test_napalm_configure_revert_rollback(self, nornir):
+        opt = {"path": f"{THIS_DIR}/test_napalm_configure_revert_rollback"}
+        configuration = "hostname changed-hostname"
+
+        d = nornir.filter(name="dev3.group_2")
+        d.run(connect, extras=opt)
+        result = d.run(
+            napalm_configure, dry_run=False, configuration=configuration, revert_in=300
+        )
+        assert result
+        for h, r in result.items():
+            assert "+hostname changed-hostname" in r.diff
+            assert r.changed
+
+        # Confirm pending commit
+        result = d.run(napalm_confirm_commit, dry_run=False)
+        assert result
+        for h, r in result.items():
+            assert r.changed is True
+            assert r.result == "Commit confirm completed"
+
+        # Cancel pending commit--immediately revert.
+        result = d.run(napalm_rollback, dry_run=False)
+        assert result
+        for h, r in result.items():
+            assert r.changed is True
+            assert r.result == "Rollback completed"
+
+        # There should be no pending commit at this point
+        result = d.run(napalm_confirm_commit, dry_run=False)
+        assert result
+        for h, r in result.items():
+            assert r.changed is False
+            assert "no pending commits" in r.result
