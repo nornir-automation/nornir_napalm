@@ -24,6 +24,7 @@ def napalm_confirm_commit(task: Task, dry_run: Optional[bool] = None) -> Result:
         result = "There are no pending commits. No action taken."
         return Result(host=task.host, result=result, changed=changed)
 
+    dry_run = task.is_dry_run(dry_run)
     if not dry_run:
         changed = True
         device.confirm_commit()
