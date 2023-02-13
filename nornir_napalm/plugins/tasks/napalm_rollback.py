@@ -14,6 +14,7 @@ def napalm_rollback(task: Task, dry_run: Optional[bool] = None) -> Result:
     changed = False
     result = ""
 
+    dry_run = task.is_dry_run(dry_run)
     if not dry_run:
         changed = True
         device.rollback()
