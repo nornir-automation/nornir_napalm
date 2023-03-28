@@ -10,14 +10,14 @@ license = "Apache-2.0"
 
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0"
-napalm = "^3"
+napalm = "^4"
 nornir = { version = "~3", allow-prereleases = true }
 
 [tool.poetry.dev-dependencies]
-black = "^22.1.0"
-mypy = "*"
-pylama = "*"
-pytest = "*"
+black = "^22.6.0"
+mypy = "1.0.0"
+pylama = "8.4.1"
+pytest = "7.2.1"
 nbval = "*"
 jupyter = "^1"
 sphinx = "^4"
@@ -26,9 +26,8 @@ nbsphinx = "^0.8"
 sphinx-issues = "^3.0"
 sphinx_rtd_theme = "^1.0"
 nornir_utils = { version = "*", allow-prereleases = true }
-pytest-cov = "*"
-
+pytest-cov = "4.0.0"
 
 [build-system]
-requires = ["poetry>=0.12"]
+requires = ["poetry>=1.3.2"]
 build-backend = "poetry.masonry.api"
