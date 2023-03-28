@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nornir_napalm"
-version = "0.3.0"
+version = "0.4.0"
 description = "NAPALM's plugins for nornir"
 authors = ["David Barroso <dbarrosop@dravetech.com>"]
 license = "Apache-2.0"
@@ -27,7 +27,6 @@ sphinx-issues = "^3.0"
 sphinx_rtd_theme = "^1.0"
 nornir_utils = { version = "*", allow-prereleases = true }
 pytest-cov = "4.0.0"
-
 
 [build-system]
 requires = ["poetry>=1.3.2"]
