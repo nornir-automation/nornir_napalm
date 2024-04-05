@@ -9,7 +9,7 @@
 nornir_napalm
 =============
 
-Collection of simple plugins for `nornir <github.com/nornir-automation/nornir/>`_
+Collection of simple plugins for `nornir <https://github.com/nornir-automation/nornir/>`_
 
 Installation
 ------------
@@ -18,13 +18,18 @@ Installation
 
     pip install nornir_napalm
 
+Documentation
+-------------
+
+You can access the plugin documentation at `https://nornir.tech/nornir_napalm <https://nornir.tech/nornir_napalm>`_
+
 Plugins
 -------
 
 Connections
 ___________
 
-* **napalm** - Connect to network devices using [napalm](github.com/napalm-automation/napalm/)
+* **napalm** - Connect to network devices using `napalm <https://github.com/napalm-automation/napalm/>`_
 
 Tasks
 _____
