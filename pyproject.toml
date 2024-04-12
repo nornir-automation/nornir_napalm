@@ -9,8 +9,8 @@ license = "Apache-2.0"
 "napalm" = "nornir_napalm.plugins.connections:Napalm"
 
 [tool.poetry.dependencies]
-python = ">=3.7,<4.0"
-napalm = "^4"
+python = ">=3.8,<4.0"
+napalm = "^5"
 nornir = { version = "~3", allow-prereleases = true }
 
 [tool.poetry.dev-dependencies]
