@@ -10,7 +10,7 @@ def napalm_cli(task: Task, commands: List[str], **kwargs: Any) -> Result:
     Run commands on remote devices using napalm
 
     Arguments:
-    commands: commands to execute
+      commands: commands to execute
       **kwargs: placeholder for user added arguments
     Returns:
       Result object with the following attributes set:
