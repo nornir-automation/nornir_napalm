@@ -9,14 +9,14 @@ license = "Apache-2.0"
 "napalm" = "nornir_napalm.plugins.connections:Napalm"
 
 [tool.poetry.dependencies]
-python = ">=3.8,<4.0"
+python = ">=3.10,<4.0"
 napalm = "^5"
 nornir = { version = "~3", allow-prereleases = true }
 
 [tool.poetry.dev-dependencies]
 black = "24.3.0"
 mypy = "1.9.0"
-pylama = "8.4.1"
+ruff = "*"
 pytest = "^8.1.1"
 nbval = "^0.11.0"
 jupyter = "^1"
@@ -27,6 +27,16 @@ sphinx-issues = "^4"
 sphinx_rtd_theme = "^2"
 nornir_utils = { version = "*", allow-prereleases = true }
 pytest-cov = "^5.0.0"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+# Port of the previous pylama linters: pep8 (E/W) + pyflakes (F) + mccabe (C90)
+select = ["E", "W", "F", "C90"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
 
 [build-system]
 requires = ["poetry>=1.3.2"]
