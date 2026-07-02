@@ -14,7 +14,7 @@ napalm = "^5"
 nornir = { version = "~3", allow-prereleases = true }
 
 [tool.poetry.dev-dependencies]
-black = "24.3.0"
+black = "26.3.1"
 mypy = "1.9.0"
 ruff = "*"
 pytest = "^9.0.3"
