@@ -26,16 +26,16 @@ pytest:
 black:
 	poetry run black --check .
 
-.PHONY: pylama
-pylama:
-	poetry run pylama .
+.PHONY: ruff
+ruff:
+	poetry run ruff check .
 
 .PHONY: mypy
 mypy:
 	poetry run mypy .
 
 .PHONY: tests
-tests: black pylama mypy pytest
+tests: black ruff mypy pytest
 .PHONY: docker-tests
 
 .PHONY:docker-tests
