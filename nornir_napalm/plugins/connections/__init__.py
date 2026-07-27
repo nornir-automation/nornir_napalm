@@ -41,9 +41,7 @@ class Napalm:
         }
 
         try:
-            parameters["optional_args"][
-                "ssh_config_file"
-            ] = configuration.ssh.config_file  # type: ignore
+            parameters["optional_args"]["ssh_config_file"] = configuration.ssh.config_file  # type: ignore
         except AttributeError:
             pass
 

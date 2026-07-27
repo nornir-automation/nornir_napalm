@@ -27,7 +27,5 @@ def napalm_validate(
         * complies (``bool``): Whether the device complies or not
     """
     device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
-    r = device.compliance_report(
-        validation_file=src, validation_source=validation_source
-    )
+    r = device.compliance_report(validation_file=src, validation_source=validation_source)
     return Result(host=task.host, result=r)
