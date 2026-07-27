@@ -22,9 +22,9 @@ pytest:
 	poetry run pytest --cov=nornir_napalm --cov-report=term-missing -vs ${ARGS} .
 	poetry run pytest --nbval -vs ${ARGS} docs/source/tutorials
 
-.PHONY: black
-black:
-	poetry run black --check .
+.PHONY: format
+format:
+	poetry run ruff format --check .
 
 .PHONY: ruff
 ruff:
@@ -35,7 +35,7 @@ mypy:
 	poetry run mypy .
 
 .PHONY: tests
-tests: black ruff mypy pytest
+tests: format ruff mypy pytest
 .PHONY: docker-tests
 
 .PHONY:docker-tests

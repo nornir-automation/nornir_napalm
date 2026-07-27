@@ -73,9 +73,7 @@ class Test(object):
 
         d = nornir.filter(name="dev3.group_2")
         d.run(connect, extras=opt)
-        result = d.run(
-            napalm_configure, dry_run=False, configuration=configuration, revert_in=300
-        )
+        result = d.run(napalm_configure, dry_run=False, configuration=configuration, revert_in=300)
         assert result
         for h, r in result.items():
             assert "+hostname changed-hostname" in r.diff
@@ -101,9 +99,7 @@ class Test(object):
 
         d = nornir.filter(name="dev3.group_2")
         d.run(connect, extras=opt)
-        result = d.run(
-            napalm_configure, dry_run=False, configuration=configuration, revert_in=300
-        )
+        result = d.run(napalm_configure, dry_run=False, configuration=configuration, revert_in=300)
         assert result
         for h, r in result.items():
             assert "+hostname changed-hostname" in r.diff
