@@ -1,6 +1,6 @@
 NAME=$(shell basename $(PWD))
 
-PYTHON:=3.7
+PYTHON:=3.12
 
 DOCKER=docker run \
 	   --rm -it \
@@ -19,20 +19,20 @@ docker:
 
 .PHONY: pytest
 pytest:
-	poetry run pytest --cov=nornir_napalm --cov-report=term-missing -vs ${ARGS} .
-	poetry run pytest --nbval -vs ${ARGS} docs/source/tutorials
+	uv run pytest --cov=nornir_napalm --cov-report=term-missing -vs ${ARGS} .
+	uv run pytest --nbval -vs ${ARGS} docs/source/tutorials
 
 .PHONY: format
 format:
-	poetry run ruff format --check .
+	uv run ruff format --check .
 
 .PHONY: ruff
 ruff:
-	poetry run ruff check .
+	uv run ruff check .
 
 .PHONY: mypy
 mypy:
-	poetry run mypy .
+	uv run mypy .
 
 .PHONY: tests
 tests: format ruff mypy pytest
