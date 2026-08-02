@@ -23,7 +23,7 @@ def set_pending_commit(task):
     conn._pending_commits = True
 
 
-class Test(object):
+class Test:
     def test_napalm_confirm_commit_no_pending(self, nornir):
         d = nornir.filter(name="dev3.group_2")
         d.run(connect, extras={})

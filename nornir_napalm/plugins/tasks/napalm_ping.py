@@ -1,4 +1,3 @@
-from typing import Optional
 from nornir.core.task import Result, Task
 
 from nornir_napalm.plugins.connections import CONNECTION_NAME
@@ -7,12 +6,12 @@ from nornir_napalm.plugins.connections import CONNECTION_NAME
 def napalm_ping(
     task: Task,
     dest: str,
-    source: Optional[str] = "",
-    ttl: Optional[int] = 255,
-    timeout: Optional[int] = 2,
-    size: Optional[int] = 100,
-    count: Optional[int] = 5,
-    vrf: Optional[str] = None,
+    source: str | None = "",
+    ttl: int | None = 255,
+    timeout: int | None = 2,
+    size: int | None = 100,
+    count: int | None = 5,
+    vrf: str | None = None,
 ) -> Result:
     """
     Executes ping on the device and returns a dictionary with the result.

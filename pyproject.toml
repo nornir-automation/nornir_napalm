@@ -64,7 +64,8 @@ line-ending = "auto"
 
 [tool.ruff.lint]
 # Port of the previous pylama linters: pep8 (E/W) + pyflakes (F) + mccabe (C90)
-select = ["E", "W", "F", "C90"]
+# UP (pyupgrade) keeps annotations on PEP 585/604 syntax now that we require >= 3.10
+select = ["E", "W", "F", "C90", "UP"]
 
 [tool.ruff.lint.mccabe]
 max-complexity = 10

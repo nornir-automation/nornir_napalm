@@ -18,7 +18,7 @@ def connect(task, extras):
     )
 
 
-class Test(object):
+class Test:
     def test_napalm_validate_src_ok(self, nornir):
         opt = {"path": THIS_DIR + "/mocked/napalm_get/test_napalm_getters"}
         d = nornir.filter(name="dev3.group_2")

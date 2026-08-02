@@ -1,11 +1,11 @@
-from typing import Any, List
+from typing import Any
 
 from nornir.core.task import Result, Task
 
 from nornir_napalm.plugins.connections import CONNECTION_NAME
 
 
-def napalm_cli(task: Task, commands: List[str], **kwargs: Any) -> Result:
+def napalm_cli(task: Task, commands: list[str], **kwargs: Any) -> Result:
     """
     Run commands on remote devices using napalm
 

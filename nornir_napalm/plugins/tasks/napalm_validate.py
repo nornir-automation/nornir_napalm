@@ -1,15 +1,15 @@
-from typing import Any, Dict, Optional
+from typing import Any
 
 from nornir.core.task import Result, Task
 
 from nornir_napalm.plugins.connections import CONNECTION_NAME
 
-ValidationSourceData = Optional[Dict[str, Dict[str, Any]]]
+ValidationSourceData = dict[str, dict[str, Any]] | None
 
 
 def napalm_validate(
     task: Task,
-    src: Optional[str] = None,
+    src: str | None = None,
     validation_source: ValidationSourceData = None,
 ) -> Result:
     """
