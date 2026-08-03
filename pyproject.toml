@@ -63,12 +63,85 @@ skip-magic-trailing-comma = false
 line-ending = "auto"
 
 [tool.ruff.lint]
-# Port of the previous pylama linters: pep8 (E/W) + pyflakes (F) + mccabe (C90)
-# UP (pyupgrade) keeps annotations on PEP 585/604 syntax now that we require >= 3.10
-select = ["E", "W", "F", "C90", "UP"]
+select = ["ALL"]
+
+ignore = [
+    "COM812", # Conflicts with the formatter, which handles trailing commas itself
+    "CPY001", # Missing copyright notice at top of file
+    "D203",   # Incompatible with D211, ruff warns unless one is disabled
+    "D213",   # Incompatible with D212, ruff warns unless one is disabled
+]
 
 [tool.ruff.lint.mccabe]
 max-complexity = 10
+
+
+[tool.ruff.lint.per-file-ignores]
+
+
+"nornir_napalm/**/*.py" = [
+    ##################################################################################################
+    # Review and change the below later                                                              #
+    ##################################################################################################
+    "ANN401", # Dynamically typed expressions (typing.Any) disallowed
+    "D100",   # Missing docstring in public module
+    "D102",   # Missing docstring in public method
+    "D104",   # Missing docstring in public package
+    "D205",   # 1 blank line required between summary line and description
+    "D212",   # Multi-line docstring summary should start at the first line
+    "D400",   # First line should end with a period
+    "D401",   # First line of docstring should be in imperative mood
+    "D404",   # First word of the docstring should not be "This"
+    "D413",   # Missing blank line after last section
+    "D415",   # First line should end with a period, question mark, or exclamation point
+    "D417",   # Missing argument description in the docstring
+    "FBT001", # Boolean-typed positional argument in function definition
+    "FBT002", # Boolean default positional argument in function definition
+    "I001",   # Import block is un-sorted or un-formatted
+    "PGH003", # Use specific rule codes when ignoring type issues
+    "PLR0913", # Too many arguments in function definition
+    "PLR0917", # Too many positional arguments
+    "RUF002", # Docstring contains ambiguous character
+    "RUF022", # `__all__` is not sorted
+    "SIM105", # Use `contextlib.suppress(...)` instead of `try`-`except`-`pass`
+]
+
+
+"tests/**/*.py" = [
+    "S101",   # Use of `assert` detected, ok in tests
+    ##################################################################################################
+    # Review and change the below later                                                              #
+    ##################################################################################################
+    "ANN001", # Missing type annotation for function argument
+    "ANN201", # Missing return type annotation for public function
+    "ARG001", # Unused function argument
+    "B007",   # Loop control variable not used within loop body
+    "D100",   # Missing docstring in public module
+    "D101",   # Missing docstring in public class
+    "D102",   # Missing docstring in public method
+    "D103",   # Missing docstring in public function
+    "D400",   # First line should end with a period
+    "D401",   # First line of docstring should be in imperative mood
+    "D415",   # First line should end with a period, question mark, or exclamation point
+    "I001",   # Import block is un-sorted or un-formatted
+    "INP001", # File is part of an implicit namespace package, add an `__init__.py`
+    "PERF102", # When using only the values of a dict use the `values()` method
+    "PT003",  # `scope='function'` is implied in `@pytest.fixture()`
+    "PTH120", # `os.path.dirname()` should be replaced by `Path.parent`
+    "SLF001", # Private member accessed
+]
+
+
+"docs/source/conf.py" = [
+    ##################################################################################################
+    # Review and change the below later                                                              #
+    ##################################################################################################
+    "A001",   # Variable is shadowing a Python builtin
+    "D100",   # Missing docstring in public module
+    "ERA001", # Found commented-out code
+    "INP001", # File is part of an implicit namespace package, add an `__init__.py`
+]
+
 
 [tool.pytest.ini_options]
 #addopts = --cov=nornir --cov-report=term-missing -vs
