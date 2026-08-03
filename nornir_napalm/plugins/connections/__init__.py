@@ -1,4 +1,4 @@
-from typing import Any, Dict, Optional
+from typing import Any
 
 from napalm import get_network_driver
 
@@ -23,17 +23,17 @@ class Napalm:
 
     def open(
         self,
-        hostname: Optional[str],
-        username: Optional[str],
-        password: Optional[str],
-        port: Optional[int],
-        platform: Optional[str],
-        extras: Optional[Dict[str, Any]] = None,
-        configuration: Optional[Config] = None,
+        hostname: str | None,
+        username: str | None,
+        password: str | None,
+        port: int | None,
+        platform: str | None,
+        extras: dict[str, Any] | None = None,
+        configuration: Config | None = None,
     ) -> None:
         extras = extras or {}
 
-        parameters: Dict[str, Any] = {
+        parameters: dict[str, Any] = {
             "hostname": hostname,
             "username": username,
             "password": password,

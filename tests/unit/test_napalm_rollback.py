@@ -17,7 +17,7 @@ def connect(task, extras):
     )
 
 
-class Test(object):
+class Test:
     def test_napalm_rollback_commit(self, nornir):
         opt = {"path": THIS_DIR + "/test_napalm_rollback_commit"}
         d = nornir.filter(name="dev3.group_2")

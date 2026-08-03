@@ -1,4 +1,4 @@
-from typing import Optional, Dict, Any
+from typing import Any
 
 from nornir.core.task import Result, Task
 from nornir_napalm.plugins.connections import CONNECTION_NAME
@@ -6,12 +6,12 @@ from nornir_napalm.plugins.connections import CONNECTION_NAME
 
 def napalm_configure(
     task: Task,
-    dry_run: Optional[bool] = None,
-    filename: Optional[str] = None,
-    configuration: Optional[str] = None,
+    dry_run: bool | None = None,
+    filename: str | None = None,
+    configuration: str | None = None,
     replace: bool = False,
-    commit_message: Optional[str] = None,
-    revert_in: Optional[int] = None,
+    commit_message: str | None = None,
+    revert_in: int | None = None,
 ) -> Result:
     """
     Loads configuration into a network devices using napalm
@@ -38,7 +38,7 @@ def napalm_configure(
 
     dry_run = task.is_dry_run(dry_run)
 
-    commit_kwargs: Dict[str, Any] = {}
+    commit_kwargs: dict[str, Any] = {}
     if commit_message:
         commit_kwargs["message"] = commit_message
     if revert_in is not None:

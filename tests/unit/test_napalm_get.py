@@ -18,7 +18,7 @@ def connect(task, extras):
     )
 
 
-class Test(object):
+class Test:
     def test_napalm_getters(self, nornir):
         opt = {"path": THIS_DIR + "/test_napalm_getters"}
         d = nornir.filter(name="dev3.group_2")

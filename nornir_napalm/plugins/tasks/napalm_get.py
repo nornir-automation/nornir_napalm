@@ -1,15 +1,15 @@
 import copy
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from nornir.core.task import Result, Task
 
 from nornir_napalm.plugins.connections import CONNECTION_NAME
 
-GetterOptionsDict = Optional[Dict[str, Dict[str, Any]]]
+GetterOptionsDict = dict[str, dict[str, Any]] | None
 
 
 def napalm_get(
-    task: Task, getters: List[str], getters_options: GetterOptionsDict = None, **kwargs: Any
+    task: Task, getters: list[str], getters_options: GetterOptionsDict = None, **kwargs: Any
 ) -> Result:
     """
     Gather information from network devices using napalm
@@ -36,7 +36,7 @@ def napalm_get(
     for g in getters:
         options = copy.deepcopy(kwargs)
         options.update(getters_options.get(g, {}))
-        getter = g if g.startswith("get_") else "get_{}".format(g)
+        getter = g if g.startswith("get_") else f"get_{g}"
         method = getattr(device, getter)
         result[g] = method(**options)
     return Result(host=task.host, result=result)

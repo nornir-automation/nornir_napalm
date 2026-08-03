@@ -24,7 +24,7 @@ def connect(task, extras):
     )
 
 
-class Test(object):
+class Test:
     def test_napalm_configure_change_dry_run(self, nornir):
         opt = {"path": THIS_DIR + "/test_napalm_configure_change_dry_run"}
         configuration = "hostname changed-hostname"

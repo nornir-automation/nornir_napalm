@@ -1,10 +1,9 @@
-from typing import Optional
 from nornir.core.task import Result, Task
 
 from nornir_napalm.plugins.connections import CONNECTION_NAME
 
 
-def napalm_confirm_commit(task: Task, dry_run: Optional[bool] = None) -> Result:
+def napalm_confirm_commit(task: Task, dry_run: bool | None = None) -> Result:
     """
     Confirm a commit that has a "pending" commit via the revert_in argument to
     napalm_config.
