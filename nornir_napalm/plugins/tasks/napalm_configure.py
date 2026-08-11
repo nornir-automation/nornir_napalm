@@ -1,6 +1,7 @@
 from typing import Any
 
 from nornir.core.task import Result, Task
+
 from nornir_napalm.plugins.connections import CONNECTION_NAME
 
 

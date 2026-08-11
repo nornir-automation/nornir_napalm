@@ -1,10 +1,8 @@
 import os
 
+import pytest
 from nornir import InitNornir
 from nornir.core.state import GlobalState
-
-import pytest
-
 
 global_data = GlobalState(dry_run=True)
 

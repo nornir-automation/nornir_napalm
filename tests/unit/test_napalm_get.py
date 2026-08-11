@@ -1,8 +1,7 @@
 import os
 
-from nornir_napalm.plugins.tasks import napalm_get
 from nornir_napalm.plugins.connections import CONNECTION_NAME
-
+from nornir_napalm.plugins.tasks import napalm_get
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__)) + "/mocked/napalm_get"
 
