@@ -97,7 +97,6 @@ max-complexity = 10
     "D417",   # Missing argument description in the docstring
     "FBT001", # Boolean-typed positional argument in function definition
     "FBT002", # Boolean default positional argument in function definition
-    "I001",   # Import block is un-sorted or un-formatted
     "PGH003", # Use specific rule codes when ignoring type issues
     "PLR0913", # Too many arguments in function definition
     "PLR0917", # Too many positional arguments
@@ -123,7 +122,6 @@ max-complexity = 10
     "D400",   # First line should end with a period
     "D401",   # First line of docstring should be in imperative mood
     "D415",   # First line should end with a period, question mark, or exclamation point
-    "I001",   # Import block is un-sorted or un-formatted
     "INP001", # File is part of an implicit namespace package, add an `__init__.py`
     "PERF102", # When using only the values of a dict use the `values()` method
     "PT003",  # `scope='function'` is implied in `@pytest.fixture()`
