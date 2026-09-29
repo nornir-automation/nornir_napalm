@@ -2,13 +2,12 @@ import os
 
 from napalm.base import exceptions
 
+from nornir_napalm.plugins.connections import CONNECTION_NAME
 from nornir_napalm.plugins.tasks import (
     napalm_configure,
     napalm_confirm_commit,
     napalm_rollback,
 )
-from nornir_napalm.plugins.connections import CONNECTION_NAME
-
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__)) + "/mocked/napalm_configure"
 

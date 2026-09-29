@@ -1,9 +1,7 @@
 from typing import Any
 
 from napalm import get_network_driver
-
 from nornir.core.configuration import Config
-
 
 CONNECTION_NAME = "napalm"
 
