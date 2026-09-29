@@ -12,19 +12,35 @@ def napalm_validate(
     src: str | None = None,
     validation_source: ValidationSourceData = None,
 ) -> Result:
-    """
-    Gather information with napalm and validate it:
+    """Check the state of the device against a set of expectations.
 
-        http://napalm.readthedocs.io/en/develop/validate/index.html
+    The rules name napalm getters and the values those getters ought to return. Napalm
+    calls each one and compares, so this is how you assert that a device is in the state
+    you think it is in rather than reading getter output yourself. See
+    https://napalm.readthedocs.io/en/latest/validate/index.html for how to write them.
+
+    A device that does not comply is not a failed task. The host succeeds either way and
+    the verdict is the ``complies`` key of the result, so a run that looks entirely
+    green can still be sitting on a device that is out of compliance. Read ``complies``,
+    and remember that getters the driver does not implement are skipped rather than
+    counted as failures.
+
+    Pass either ``src`` or ``validation_source``. If you pass both, the file wins.
 
     Arguments:
-        src: file to use as validation source
-        validation_source (list): data to validate device's state
+        task: Task nornir supplies when it runs this, not something you pass yourself
+        src: Path to a YAML file holding the rules, read on the machine running nornir
+        validation_source: The same rules as data instead of a file: a list of single
+            entry mappings of getter name to the expected result, for instance
+            ``[{"get_interfaces": {"Ethernet1": {"description": ""}}}]``
 
     Returns:
-        Result object with the following attributes set:
-        * result (``dict``): dictionary with the result of the validation
-        * complies (``bool``): Whether the device complies or not
+        Result object with these attributes set
+
+        * result (``dict``): the compliance report. One entry per rule, keyed by getter
+          name, plus ``complies`` (``bool``) saying whether every rule passed and
+          ``skipped`` (``list``) naming the getters the driver does not implement
+
     """
     device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
     r = device.compliance_report(validation_file=src, validation_source=validation_source)
